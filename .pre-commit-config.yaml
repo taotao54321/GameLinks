@@ -1,0 +1,12 @@
+repos:
+  - repo: local
+    hooks:
+      - id: tidy
+        name: tidy
+        always_run: true
+        pass_filenames: false
+        language: system
+        entry: bash
+        args:
+          - -c
+          - 'fd --extension html --print0 . docs/ | xargs --null --no-run-if-empty tidy -quiet -errors --show-filename --gnu-emacs'
